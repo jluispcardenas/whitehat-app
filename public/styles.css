@@ -1,0 +1,69 @@
+body {
+    background-color: #000;
+    background-image: url('/public/bg.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+#login-screen, #console-screen {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    text-shadow: 0 0 5px #0f0;
+}
+
+#login-button {
+    background-color: #0f0;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+#login-button:hover {
+    background-color: #000;
+    color: #0f0;
+    box-shadow: 0 0 10px #0f0;
+}
+
+#output {
+    height: calc(100% - 30px);
+    overflow-y: auto;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#input-line {
+    display: flex;
+    width: 100%;
+}
+
+.prompt {
+    color: #0f0;
+    margin-right: 5px;
+}
+
+#command-input {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    color: #0f0;
+    font-family: 'Courier New', monospace;
+    font-size: 16px;
+    outline: none;
+}
