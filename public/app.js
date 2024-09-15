@@ -12,6 +12,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const loginScreen = document.getElementById('login-screen');
+const wrapConsoleScreen = document.getElementById('wrap-console-screen');
 const consoleScreen = document.getElementById('console-screen');
 const loginButton = document.getElementById('login-button');
 const output = document.getElementById('output');
@@ -33,6 +34,7 @@ function writeToConsole(text) {
     }
 
     typeWriter();
+    commandInput.focus()
 }
 
 
@@ -41,11 +43,13 @@ loginButton.addEventListener('click', () => {
     firebase.auth().signInWithPopup(provider)
         .then((result) => {
             loginScreen.style.display = 'none';
-            consoleScreen.style.display = 'flex';
-            writeToConsole('Acceso concedido. Bienvenido al sistema. Escribe "Iniciar"');
+            wrapConsoleScreen.style.display = 'flex';
+            writeToConsole('Access granted. Welcome to the system. Type "Start" or "Iniciar" for Spanish');
         }).catch((error) => {
-            console.error('Error de autenticación:', error);
+            console.error('Auth error:', error);
         });
+
+    commandInput.focus();
 });
 
 
@@ -58,8 +62,8 @@ async function createThread() {
         threadId = response.data.threadId; // Guardamos el threadId para futuras interacciones
 	//writeToConsole('Hilo creado. ID del hilo: ' + threadId);
     } catch (error) {
-        console.error('Error al crear el hilo:', error);
-        writeToConsole('Error al crear el hilo.');
+        console.error('Error creating thread:', error);
+        writeToConsole('Error creating thread.');
     }
 }
 
@@ -80,8 +84,8 @@ async function sendMessageToAssistant(message) {
 	console.log(messages[0])
 	
     } catch (error) {
-        console.error('Error al obtener respuesta del asistente:', error);
-        writeToConsole('Error: No se pudo obtener una respuesta del asistente.');
+        console.error('Could not get response from the assistant:', error);
+        writeToConsole('Error: Could not get response from the assistant. Please try again later.');
     }
 }
 
@@ -106,14 +110,15 @@ commandInput.addEventListener('keydown', async (e) => {
             try {
                 // Si no hay un threadId, crear uno primero
                 if (!threadId) {
-		    writeToConsole("Cargando ambiente Kali Linux para iniciar...")
+		    writeToConsole("Loading Kali Linux environment to boot...")
                     await createThread();
                 }
 
                 await sendMessageToAssistant(command);  // Enviar el comando al asistente
+		commandInput.focus()
             } catch (error) {
-                console.error('Error al enviar el mensaje al asistente:', error);
-            	writeToConsole('Error al enviar el mensaje al asistente')
+                console.error('Error sending message to assistant: ', error);
+            	writeToConsole('Error sending message to assistant. Try again later.')
 	    } finally {
                 // Rehabilitar el campo de entrada después de recibir la respuesta
                 commandInput.disabled = false;

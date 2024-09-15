@@ -3,21 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consola Hacker con IA</title>
+    <title>WhiteHat</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="login-screen">
-        <h1>Acceso Restringido</h1>
-        <button id="login-button">Iniciar sesión con Google</button>
+        <h1>Restricted Access</h1>
+        <button id="login-button">Login with Google</button>
     </div>
-    <div id="console-screen" style="display: none;">
+    <div id="wrap-console-screen" style="display:none">
+    <div id="console-screen">
         <div id="output"></div>
         <div id="input-line">
             <span class="prompt">$</span>
             <input type="text" id="command-input" autofocus>
         </div>
     </div>
+    <div>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
