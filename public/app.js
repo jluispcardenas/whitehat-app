@@ -18,6 +18,7 @@ const loginButton = document.getElementById('login-button');
 const output = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
 
+
 // Función para escribir en la consola
 function writeToConsole(text) {
     const p = document.createElement('p');
@@ -28,7 +29,7 @@ function writeToConsole(text) {
         if (index < text.length) {
             p.textContent += text.charAt(index);
             index++;
-            output.scrollTop = output.scrollHeight; // Scroll automático mientras escribe
+            consoleScreen.scrollTop = consoleScreen.scrollHeight; // Scroll automático mientras escribe
             setTimeout(typeWriter, 30); // Ajusta el tiempo para cambiar la velocidad (50 ms por letra)
 	} else {
 	    setTimeout(function() { commandInput.focus() },100);
