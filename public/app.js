@@ -29,7 +29,7 @@ function writeToConsole(text) {
             p.textContent += text.charAt(index);
             index++;
             output.scrollTop = output.scrollHeight; // Scroll automático mientras escribe
-            setTimeout(typeWriter, 50); // Ajusta el tiempo para cambiar la velocidad (50 ms por letra)
+            setTimeout(typeWriter, 30); // Ajusta el tiempo para cambiar la velocidad (50 ms por letra)
 	} else {
 	    setTimeout(function() { commandInput.focus() },100);
 	}
