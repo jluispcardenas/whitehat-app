@@ -93,7 +93,7 @@ app.post('/api/message', (req, res) => {
             // Check the status
             pollingInterval = setInterval(() => {
                 checkingStatus(res, threadId, runId);
-            }, 2000);
+            }, 3000);
         });
     });
   });
